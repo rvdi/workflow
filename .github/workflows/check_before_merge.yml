@@ -1,14 +1,11 @@
-name: Run test before pr merge
+name: BLA
 on:
   push:
     branches: [ "develop" ]
 jobs:
   build:
-    name: run_test_before_merge
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Run a one-line script
         run: echo Hello, world!
-      - name: Fail the Build
-        uses: cutenode/action-always-fail@v1.0.0
