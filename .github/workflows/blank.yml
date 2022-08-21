@@ -11,10 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run a one-line script
-        run: echo Hello, world! ${{ github.event.pull_request.merged }}
-  if_merged:
-    if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
-    steps:
+        run: echo Hello, world!
       - name: Fail the Build
         uses: cutenode/action-always-fail@v1.0.0
+        if: github.event.pull_request.merged == true
