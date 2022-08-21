@@ -3,7 +3,8 @@ on:
   pull_request:
     branches: [ "develop" ]
 jobs:
-  buildx:
+  build:
+    name: run_before_pr
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
