@@ -13,4 +13,5 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
       - name: Fail the Build
+        if: github.event.pull_request.merged
         uses: cutenode/action-always-fail@v1.0.0
