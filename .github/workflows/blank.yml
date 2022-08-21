@@ -14,6 +14,7 @@ jobs:
         run: echo Hello, world! ${{ github.event.pull_request.merged }}
   if_merged:
     if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
     steps:
       - name: Fail the Build
         uses: cutenode/action-always-fail@v1.0.0
