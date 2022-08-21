@@ -1,14 +1,13 @@
-name: CI
+name: Run test before pr merge
 on:
-  pull_request:
+  push:
     branches: [ "develop" ]
 jobs:
   build:
-    name: run_before_pr
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Run a one-line script
         run: echo Hello, world!
-#      - name: Fail the Build
-#        uses: cutenode/action-always-fail@v1.0.0
+      - name: Fail the Build
+        uses: cutenode/action-always-fail@v1.0.0
