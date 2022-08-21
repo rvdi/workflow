@@ -1,4 +1,4 @@
-name: Run test before pr merge
+name: Run during push
 on:
   push:
     branches: [ "develop" ]
