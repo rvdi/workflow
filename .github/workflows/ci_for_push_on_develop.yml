@@ -12,5 +12,5 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world! ${{ github.ref }}
       - name: Fail the Build
-        if: ${{ github.ref == 'refs/heads/feature' }}
+        if: contains(github.ref_name, 'feature')
         uses: cutenode/action-always-fail@v1.0.0
