@@ -1,11 +1,14 @@
 name: Run during push
 on:
-  push:
+  pull_request:
     branches:
       - "develop"
+  push:
+    branches:
       - "feature/**"
 jobs:
   build:
+    name: run_before_pr_new
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -15,6 +18,6 @@ jobs:
 #        id: alwaysFailed
 #        if: contains(github.ref_name, 'feature')
 #        uses: cutenode/action-always-fail@v1.0.0
-      - name: Run archive
-        if: success() || (failure() && steps.alwaysFailed.conclusion == 'failure')
-        run: echo Run archive
+#      - name: Run archive
+#        if: success() || (failure() && steps.alwaysFailed.conclusion == 'failure')
+#        run: echo Run archive
