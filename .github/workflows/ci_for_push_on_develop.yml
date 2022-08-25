@@ -1,13 +1,20 @@
 name: Run during push
 on:
   push:
-    branches: [ "develop" ]
+    branches:
+      - "develop"
+      - "feature/**"
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Run a one-line script
-        run: echo Hello, world!
-#      - name: Fail the Build
-#        uses: cutenode/action-always-fail@v1.0.0
+        run: echo Hello, world! ${{ github.ref }}
+      - name: Fail the Build
+        id: alwaysFailed
+        if: contains(github.ref_name, 'feature')
+        uses: cutenode/action-always-fail@v1.0.0
+      - name: Run archive
+        if: success() || (failure() && steps.alwaysFailed.conclusion == 'failure')
+        run: echo Run archive
